@@ -8,22 +8,26 @@ await all()
 
 <template>
   <main class="front">
-    <div class="log cursor-pointer" @click="$router.push('/')">
-      <img src="/images/logo.png" class="w-[500px]" />
-    </div>
     <nav>
       <section>
         <div
           v-for="category of categories"
           :key="category.id"
-          :class="{active: +$route.params.cid === category.id}"
+          :class="{ active: +$route.params.cid === category.id }"
           @click="$router.push({ name: 'category', params: { cid: category.id } })">
           {{ category.title }}
         </div>
       </section>
     </nav>
+    <!-- <div>
+      <header className="item-header">
+        <span className="item-header-username">ccc</span>
+        <span className="item-header-point">eef</span>
+      </header>
+      <main className="item-main">我是主要内容</main>
+    </div> -->
     <section>
-      <el-button type="primary" size="default" @click="$router.push({name:'create'})">发表文章</el-button>
+      <el-button type="primary" size="default" @click="$router.push({ name: 'create' })">发表文章</el-button>
       <el-button type="success" size="default">登录</el-button>
     </section>
     <router-view />
@@ -40,16 +44,24 @@ main.front {
       div {
         @apply bg-slate-200 text-gray-700 py-2 px-3 cursor-pointer hover:shadow-lg duration-300;
         &.active {
-          @apply bg-orange-600
+          @apply bg-orange-600;
         }
       }
       &:nth-of-type(2) {
         @apply flex justify-between md:mt-0 ml-0;
-        button { 
-          @apply flex-1
+        button {
+          @apply flex-1;
         }
       }
     }
   }
+  // div {
+  //     border: 1px solid #1da921;
+  //     width: 180px;
+  //     border-radius: 5px;
+  //     box-shadow: 0 0 5px 0 #b3b3b3;
+  //     margin: 5px auto;
+  //     background: #fff;
+  // }
 }
 </style>

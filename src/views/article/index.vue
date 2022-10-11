@@ -4,7 +4,7 @@
 
 <template>
   <main>
-    <article-list />
+    <ArticleList />
   </main>
 </template>
 <style lang="scss" scoped>
