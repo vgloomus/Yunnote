@@ -1,4 +1,4 @@
-import { addArticle, getArticle, getArticleList,updateArticle } from "@/apis/article"
+import { addArticle, getArticle, getArticleList,removeArticle,updateArticle } from "@/apis/article"
 import { ref } from "vue"
 
 
@@ -23,6 +23,10 @@ export default () => {
         return updateArticle(data)
     }
 
-    return { all, pageResult, article, find, add, update }
+    const remove = async (id: number)=> {
+        return removeArticle(id)
+    }
+
+    return { all, pageResult, article, find, add, update,remove }
 
 }

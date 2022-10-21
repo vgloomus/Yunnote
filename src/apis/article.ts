@@ -28,3 +28,10 @@ export async function updateArticle(data: any) {
         data
     })
 }
+
+export async function removeArticle(id:number) {
+    return http.request({
+        url: `article/${id}`,
+        method: 'DELETE',
+    })
+}

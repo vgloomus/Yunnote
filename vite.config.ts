@@ -29,18 +29,29 @@ export default defineConfig(({ command, mode }) => {
         },
       },
     },
-    server: {
-      host: true,
+    // server: {
+    //   host: true,
+    //   proxy: {
+    //     '/api': {
+    //       target: env.VITE_API_URL,
+    //       changeOrigin: true,
+    //     },
+    //     '/captcha/api/math': {
+    //       target: env.VITE_API_URL,
+    //       changeOrigin: true,
+    //     },
+    //   },
+    // },
+    server: { //主要是加上这段代码
+      host: '127.0.0.1',
+      port: 3001,
       proxy: {
         '/api': {
-          target: env.VITE_API_URL,
+          target: 'http://121.5.144.14:3000/api/',	//实际请求地址
           changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/api/, '')
         },
-        '/captcha/api/math': {
-          target: env.VITE_API_URL,
-          changeOrigin: true,
-        },
-      },
-    },
+      }
+    }
   }
 })

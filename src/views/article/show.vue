@@ -7,14 +7,14 @@ const route = useRoute()
 await find(+route.params.id)
 </script>
 <template>
-  <main>
+  <HdAnimateList tag="ul" :duration="2" :delay="0.1">
+  <div class="main">
     <h1>{{ article?.title }}</h1>
     <el-button
       type="danger"
       size="small"
       @click="$router.push({ name: 'update', params: { id: article?.id } })"
-      >编辑</el-button
-    >
+      >编辑</el-button>
     <time>
       创建时间:{{ article?.createdAt }}&nbsp;&nbsp;&nbsp;&nbsp; 更新时间:{{
         article?.updatedAt
@@ -23,16 +23,21 @@ await find(+route.params.id)
     <p>
       {{ article?.content }}
     </p>
-  </main>
+  </div>
+  </HdAnimateList>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 main {
+  border: 1px solid #1da921;
+  border-radius: 5px;
+  margin-top: 13px;
+  display: block;
   h1 {
-    @apply mb-4 border-b border-gray-500 pb-3 mt-8 text-2xl text-gray-600 flex justify-between;
+    @apply mt-4 border-b border-gray-500 pb-3 text-2xl text-gray-600 flex justify-between;
   }
   time {
-    @apply text-xs font-bold text-slate-600 mb-5 block;
+    @apply text-xs font-bold text-slate-600 mb-2 mt-2 block;
   }
   p {
     @apply text-gray-600;
